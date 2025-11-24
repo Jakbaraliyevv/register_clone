@@ -1,0 +1,154 @@
+/* Animatsiyalar */
+@keyframes wave {
+  0% { background-position: 0 0; }
+  50% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
+
+@keyframes floatSoft {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(3deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* Qo‘llash */
+.animate-wave {
+  animation: wave 20s linear infinite;
+}
+
+.animate-floatSoft {
+  animation: floatSoft 6s ease-in-out infinite;
+}
+@keyframes floatSoft {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+.animate-floatSoft {
+  animation: floatSoft 4s ease-in-out infinite;
+}
+
+@keyframes blob {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.animate-blob {
+  animation: blob 8s ease-in-out infinite;
+}
+
+@keyframes scanSoft {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-scanSoft {
+  animation: scanSoft 8s linear infinite;
+}
+:root {
+  --scroll: 0;
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: calc(var(--scroll) * 100%);
+  height: 4px;
+  background: linear-gradient(90deg, #a78bfa, #ec4899, #22d3ee);
+  transform-origin: left;
+  z-index: 50;
+}
+/* === AUTOSCROLL ANIMATSIYA === */
+@keyframes autoscroll {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-12px);
+  }
+}
+
+/* === AI GLOW PULSE ANIMATSIYA === */
+@keyframes glowpulse {
+  0%, 100% {
+    box-shadow: 0 0 12px #a855f7;
+  }
+  50% {
+    box-shadow: 0 0 28px #c084fc;
+  }
+}
+
+/* === ANIMATSIYALAR KLASSLARI === */
+.animate-autoscroll {
+  animation: autoscroll 3s ease-in-out infinite alternate;
+}
+
+.animate-glowpulse {
+  animation: glowpulse 2.4s ease-in-out infinite;
+}
+
+
+
+input{
+outline: oklch(62.054% 0.25877 304.985 / 0.267) solid 2px;
+}
+
+.we{
+  width: 45%
+  
+}
+@media (max-width: 768px) {
+  .we{
+    width: 100%
+  }
+  .sss{
+  width:100% !important;
+  margin:0 auto;
+}
+.ani article:nth-child(5){
+  width: 100% !important;
+  margin-bottom: 80px;
+}
+}
+.sss{
+  width:70%;
+  margin: 0 auto;
+}
+
+.ani article:nth-child(5){
+  width: 55%;
+}
+
+textarea{
+  outline: oklch(62.054% 0.25877 304.985 / 0.267) solid 2px;
+}
+select{
+  outline: oklch(62.054% 0.25877 304.985 / 0.267) solid 2px;
+  border: none !important;
+}@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px 5px var(--glow-color); }
+  50% { box-shadow: 0 0 40px 15px var(--glow-color); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+/* 
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+} */
+
+input:focus {
+    outline: oklch(.627 .265 303.9) solid 2px;
+  box-shadow: 0 0 0 2px rgba(59,130,246,0.3); /* как ring в Tailwind */
+}
+textarea:focus {
+    outline: oklch(.627 .265 303.9) solid 2px;
+  box-shadow: 0 0 0 2px rgba(59,130,246,0.3); /* как ring в Tailwind */
+}
+select:focus {
+    outline: oklch(.627 .265 303.9) solid 2px;
+  box-shadow: 0 0 0 2px rgba(59,130,246,0.3); /* как ring в Tailwind */
+}
