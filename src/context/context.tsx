@@ -1,16 +1,16 @@
 // ...existing code...
-import robosumo from '../assets/robosumo.png';
-import futbol from '../assets/futbol.png';
-import ai from '../assets/ai.png';
-import constest from '../assets/contest.png';
-import idea from '../assets/idea.png';
+import robosumo from "../assets/robosumo.png";
+import futbol from "../assets/futbol.png";
+import ai from "../assets/ai.png";
+import constest from "../assets/contest.png";
+import idea from "../assets/idea.png";
 import React, { createContext, useState, useContext } from "react";
-import contestGift from '../assets/gifts/contest.png';
+import contestGift from "../assets/gifts/contest.png";
 
-import robof from '../assets/gifts/robo_fut.png';
-import robofutbol from '../assets/gifts/robo_fut.png';
-import aig from '../assets/gifts/Raqamli avlod to’plami (7)-edited-free (carve.photos).png';
-import sumon from '../assets/gifts/sumo.png';
+import robof from "../assets/gifts/robo_fut.png";
+import robofutbol from "../assets/gifts/robo_fut.png";
+import aig from "../assets/gifts/Raqamli avlod to’plami (7)-edited-free (carve.photos).png";
+import sumon from "../assets/gifts/sumo.png";
 // import laptop from '../assets/gifts/lop.png';
 // import iphone from '../assets/gifts/i.png';
 // import TV from '../assets/gifts/tele.png';
@@ -38,11 +38,11 @@ interface BlockType {
   title: string;
   desc: string;
   image: string;
-  size: 'small' | 'large';
+  size: "small" | "large";
   link: string;
-  // gifts?: Gift[]; 
-  img:string;
-  date:string;
+  // gifts?: Gift[];
+  img: string;
+  date: string;
 }
 
 interface ModalContextType {
@@ -58,13 +58,13 @@ const ModalContext = createContext<ModalContextType | undefined>(undefined);
 const blocks = [
   {
     id: 1,
-    title: 'Foydali Ixtirolar',
-    desc: 'Yangi g‘oyalarni amalga oshiring.',
+    title: "Foydali Ixtirolar",
+    desc: "Yangi g‘oyalarni amalga oshiring.",
     image: idea,
-    size: 'small',
-    link: '/register/fixtirolar',
+    size: "small",
+    link: "/register/fixtirolar",
     date: "2025-12-11T09:00:00",
-    img:robof,
+    img: robof,
     // gifts: [
     //   { type: "Noutbuk", description: "Noutbuk", image: laptop, count: 1 },
     //   { type: "Televizor", description: "Smart soat", image: TV, count: 2 },
@@ -73,12 +73,12 @@ const blocks = [
   },
   {
     id: 2,
-    title: 'Robo Sumo',
-    desc: 'Robotlarning kuchli to‘qnashuv janglari.',
+    title: "Robo Sumo",
+    desc: "Robotlarning kuchli to‘qnashuv janglari.",
     image: robosumo,
-    size: 'small',
-    link: '/register/rsumo',
-    img:sumon,
+    size: "small",
+    link: "/register/rsumo",
+    img: sumon,
     date: "2025-12-11T09:00:00",
     // gifts: [
     //   { type: "samakat", description: "Samakat", image: s, count: 1 },
@@ -88,12 +88,12 @@ const blocks = [
   },
   {
     id: 3,
-    title: 'DG Contest',
-    desc: 'Innovatsion musobaqalar va g‘oyalar.',
+    title: "DG Contest",
+    desc: "Innovatsion musobaqalar va g‘oyalar.",
     image: constest,
-    size: 'small',
-    link: '/register/contest',
-    img:contestGift,
+    size: "small",
+    link: "/register/contest",
+    img: contestGift,
     date: "2025-12-10T09:00:00",
     // gifts: [
     //   { type: "keyboard", description: "Klaviatura", image: key, count: 1 },
@@ -103,13 +103,13 @@ const blocks = [
   },
   {
     id: 4,
-    title: 'Robo Futbol',
-    desc: "Ro'yhatdan o'tganlar iphone 17 pro max yutib olishlari mumkin.",
+    title: "Robo Futbol",
+    desc: "Robotlar futbol maydonida futbol o'yini",
     image: futbol,
-    size: 'small',
-    link: '/register/rfutbol',
+    size: "small",
+    link: "/register/rfutbol",
     date: "2025-12-12T09:00:00",
-    img:robofutbol,
+    img: robofutbol,
     // gifts: [
     //   { type: "nout", description: "Noutbuk", image: laptop, count: 2 },
     //   { type: "tv", description: "Televizor", image: TV, count: 2 },
@@ -124,7 +124,7 @@ const blocks = [
     size: "large",
     link: "/register/ai",
     date: "2025-12-13T09:00:00",
-    img:aig,
+    img: aig,
     // gifts: [
     //   { type: "iphone", description: "iPhone 17", image: iphone, count: 1 },
     //   { type: "speaker", description: "Kalonka", image: kal, count: 10 },
@@ -134,15 +134,25 @@ const blocks = [
     //   { type: "headphones", description: "Naushnik", image: naush, count: 10 },
     //   { type: "keyboard", description: "Klaviatura", image: key, count: 10 },
     // ],
-  }
+  },
+  
 ];
 
-
-export const ModalProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const ModalProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [showRegister, setShowRegister] = useState<boolean>(false);
   const [showSubscribe, setShowSubscribe] = useState<boolean>(false);
   return (
-    <ModalContext.Provider value={{ showRegister, setShowRegister, blocks, showSubscribe, setShowSubscribe }}>
+    <ModalContext.Provider
+      value={{
+        showRegister,
+        setShowRegister,
+        blocks,
+        showSubscribe,
+        setShowSubscribe,
+      }}
+    >
       {children}
     </ModalContext.Provider>
   );

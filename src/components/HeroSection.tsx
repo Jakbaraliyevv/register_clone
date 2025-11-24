@@ -1,11 +1,11 @@
-import { useMemo } from 'react';
-import { Cpu, Brain, Zap } from 'lucide-react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
-import { RegistrationModal } from './RegistrationModal';
-import { useModal } from '../context/context';
-import { CountdownTimer } from './ui/CountdownTimer';
-import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { useMemo } from "react";
+import { Cpu, Brain, Zap } from "lucide-react";
+import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { RegistrationModal } from "./RegistrationModal";
+import { useModal } from "../context/context";
+import { CountdownTimer } from "./ui/CountdownTimer";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
 
 export function FiveBlocks() {
   const { blocks } = useModal();
@@ -13,7 +13,10 @@ export function FiveBlocks() {
   const mainBlock = allBlocks.shift(); // birinchi elementni olib olamiz
   const smallBlocks = allBlocks;
   return (
-    <section className="bg-gray-950 py-10 px-4 sm:px-6 lg:px-10 mt-10 lg:mt-20" id='musobaqalar'>
+    <section
+      className="bg-gray-950 py-10 px-4 sm:px-6 lg:px-10 mt-10 lg:mt-20"
+      id="musobaqalar"
+    >
       <div className="max-w-7xl mx-auto">
         <CountdownTimer targetDate="2025-12-10T09:00:00" />
         <div className="flex flex-wrap justify-center gap-8 lg:gap-10 ani">
@@ -35,7 +38,9 @@ export function FiveBlocks() {
                   {item.title}
                 </h3>
 
-                <p className="text-gray-300 mt-3 mb-5 text-sm sm:text-base">{item.desc}</p>
+                <p className="text-gray-300 mt-3 mb-5 text-sm sm:text-base">
+                  {item.desc}
+                </p>
 
                 <div className="flex flex-wrap gap-3 mt-auto justify-center">
                   <Link
@@ -51,6 +56,7 @@ export function FiveBlocks() {
             </article>
           ))}
         </div>
+        
       </div>
     </section>
   );
@@ -71,9 +77,30 @@ export function HeroSection() {
   );
 
   const floatingIcons = [
-    { icon: Brain, top: '25%', left: '33%', from: 'purple', to: 'transparent', border: 'purple-500/30' },
-    { icon: Cpu, top: '66%', left: '25%', from: 'cyan', to: 'transparent', border: 'cyan-500/30' },
-    { icon: Zap, top: '33%', left: '66%', from: 'pink', to: 'transparent', border: 'pink-500/30' },
+    {
+      icon: Brain,
+      top: "25%",
+      left: "33%",
+      from: "purple",
+      to: "transparent",
+      border: "purple-500/30",
+    },
+    {
+      icon: Cpu,
+      top: "66%",
+      left: "25%",
+      from: "cyan",
+      to: "transparent",
+      border: "cyan-500/30",
+    },
+    {
+      icon: Zap,
+      top: "33%",
+      left: "66%",
+      from: "pink",
+      to: "transparent",
+      border: "pink-500/30",
+    },
   ];
 
   return (
@@ -101,11 +128,16 @@ export function HeroSection() {
       ))}
 
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600 rounded-full filter blur-3xl opacity-20 animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-600 rounded-full filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '1s' }} />
+      <div
+        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-600 rounded-full filter blur-3xl opacity-20 animate-pulse"
+        style={{ animationDelay: "1s" }}
+      />
 
       {floatingIcons.map(({ icon: Icon, top, left, from, to, border }, i) => (
         <div key={i} className="absolute hidden md:block" style={{ top, left }}>
-          <div className={`p-4 bg-gradient-to-br from-${from}-600/20 to-${to} backdrop-blur-sm border ${border} rounded-2xl animate-floatSoft`}>
+          <div
+            className={`p-4 bg-gradient-to-br from-${from}-600/20 to-${to} backdrop-blur-sm border ${border} rounded-2xl animate-floatSoft`}
+          >
             <Icon className={`text-${from}-400`} size={40} />
           </div>
         </div>
@@ -114,7 +146,6 @@ export function HeroSection() {
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
         <FiveBlocks />
       </div>
-
     </section>
   );
 }
