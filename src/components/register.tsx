@@ -122,7 +122,7 @@ const SEATS_DEFAULT: Record<string, number> = {
   robofutbol: 24,
   ixtirolar: 20,
 };
-const TEAM_DIRECTIONS = ["rfutbol"];
+// const TEAM_DIRECTIONS = ["rfutbol"];
 
 export default function Register(): JSX.Element {
   const { setShowSubscribe } = useModal();
@@ -136,7 +136,7 @@ export default function Register(): JSX.Element {
     .toString()
     .toLowerCase();
   const eventKey = DIRECTION_ALIASES[detected] ?? detected;
-  const needsPartner = TEAM_DIRECTIONS.includes(eventKey);
+  //   const needsPartner = TEAM_DIRECTIONS.includes(eventKey);
   const block: BlockType | undefined =
     blocks.find(
       (b) =>
@@ -171,24 +171,24 @@ export default function Register(): JSX.Element {
     telegram_username: "",
     direction: eventKey,
     eventKey,
-    friend_data: null,
+    // friend_data: null,
   });
 
   // Friend form (only for robofutbol)
-  const [friendForm, setFriendForm] = useState<PersonPayload>({
-    first_name: "",
-    last_name: "",
-    middle_name: "",
-    phone_number: "",
-    birth_date: "",
-    email: "",
-    study_place: "",
-    region: "",
-    district: "",
-    about: "",
-    gender: "",
-    telegram_username: "",
-  });
+  //   const [friendForm, setFriendForm] = useState<PersonPayload>({
+  //     first_name: "",
+  //     last_name: "",
+  //     middle_name: "",
+  //     phone_number: "",
+  //     birth_date: "",
+  //     email: "",
+  //     study_place: "",
+  //     region: "",
+  //     district: "",
+  //     about: "",
+  //     gender: "",
+  //     telegram_username: "",
+  //   });
   // pomne
 
   interface PhoneInputProps {
@@ -216,12 +216,12 @@ export default function Register(): JSX.Element {
   ) {
     setForm((s) => ({ ...s, [key]: value }));
   }
-  function setFriendField<K extends keyof PersonPayload>(
-    key: K,
-    value: PersonPayload[K]
-  ) {
-    setFriendForm((s) => ({ ...s, [key]: value }));
-  }
+  //   function setFriendField<K extends keyof PersonPayload>(
+  //     key: K,
+  //     value: PersonPayload[K]
+  //   ) {
+  //     setFriendForm((s) => ({ ...s, [key]: value }));
+  //   }
 
   function validate(): string | null {
     if (!form.first_name?.trim()) return "Ism kiritilsin.";
@@ -234,27 +234,27 @@ export default function Register(): JSX.Element {
     if (!form.region?.trim()) return "Hudud kiritilsin.";
     if (!form.district?.trim()) return "Tuman kiritilsin.";
     if (!form.about?.trim()) return "Qisqacha ma'lumot kiritilsin.";
-    if (eventKey === "rfutbol") {
-      if (!friendForm.first_name?.trim())
-        return "Do‘stingizning ismi kiritilsin.";
-      if (!friendForm.last_name?.trim())
-        return "Do‘stingizning familiyasi kiritilsin.";
-      if (!friendForm.middle_name?.trim())
-        return "Do‘stingizning otasining ismi kiritilsin.";
-      if (!friendForm.gender) return "Do‘stingizning jinsini tanlang.";
-      if (!friendForm.phone_number?.trim())
-        return "Do‘stingizning telefon raqami kiritilsin.";
-      if (!friendForm.birth_date)
-        return "Do‘stingizning tug‘ilgan sanasi kiritilsin.";
-      if (!friendForm.study_place?.trim())
-        return "Do‘stingizning o‘qish joyi kiritilsin.";
-      if (!friendForm.region?.trim())
-        return "Do‘stingizning hududi kiritilsin.";
-      if (!friendForm.district?.trim())
-        return "Do‘stingizning tumani kiritilsin.";
-      if (!friendForm.about?.trim())
-        return "Do‘stingiz haqida qisqacha ma'lumot kiritilsin.";
-    }
+    // if (eventKey === "rfutbol") {
+    //   if (!friendForm.first_name?.trim())
+    //     return "Do‘stingizning ismi kiritilsin.";
+    //   if (!friendForm.last_name?.trim())
+    //     return "Do‘stingizning familiyasi kiritilsin.";
+    //   if (!friendForm.middle_name?.trim())
+    //     return "Do‘stingizning otasining ismi kiritilsin.";
+    //   if (!friendForm.gender) return "Do‘stingizning jinsini tanlang.";
+    //   if (!friendForm.phone_number?.trim())
+    //     return "Do‘stingizning telefon raqami kiritilsin.";
+    //   if (!friendForm.birth_date)
+    //     return "Do‘stingizning tug‘ilgan sanasi kiritilsin.";
+    //   if (!friendForm.study_place?.trim())
+    //     return "Do‘stingizning o‘qish joyi kiritilsin.";
+    //   if (!friendForm.region?.trim())
+    //     return "Do‘stingizning hududi kiritilsin.";
+    //   if (!friendForm.district?.trim())
+    //     return "Do‘stingizning tumani kiritilsin.";
+    //   if (!friendForm.about?.trim())
+    //     return "Do‘stingiz haqida qisqacha ma'lumot kiritilsin.";
+    // }
     return null;
   }
 
@@ -274,11 +274,11 @@ export default function Register(): JSX.Element {
     }
 
     let payload: any = { ...form, direction: eventKey };
-    if (eventKey === "rfutbol") {
-      payload.friend_data = { ...friendForm };
-    } else {
-      delete payload.friend_data;
-    }
+    // if (eventKey === "rfutbol") {
+    //   payload.friend_data = { ...friendForm };
+    // } else {
+    //   delete payload.friend_data;
+    // }
 
     // Remove empty strings
     Object.keys(payload).forEach((k) => {
@@ -286,19 +286,19 @@ export default function Register(): JSX.Element {
         payload[k] = null;
       }
     });
-    if (payload.friend_data) {
-      Object.keys(payload.friend_data).forEach((k) => {
-        if (payload.friend_data![k] === "") payload.friend_data![k] = null;
-      });
+    // if (payload.friend_data) {
+    //   Object.keys(payload.friend_data).forEach((k) => {
+    //     if (payload.friend_data![k] === "") payload.friend_data![k] = null;
+    //   });
 
-      const friendRegionObj = regions.find(
-        (region) =>
-          region.id === Number(payload.friend_data!.region) ||
-          region.soato_id === Number(payload.friend_data!.region)
-      );
+    //   const friendRegionObj = regions.find(
+    //     (region) =>
+    //       region.id === Number(payload.friend_data!.region) ||
+    //       region.soato_id === Number(payload.friend_data!.region)
+    //   );
 
-      payload.friend_data.region = friendRegionObj?.name_uz || "";
-    }
+    //   payload.friend_data.region = friendRegionObj?.name_uz || "";
+    // }
 
     const regionObj = regions.find(
       (region) =>
@@ -603,11 +603,7 @@ export default function Register(): JSX.Element {
                               : "bg-purple-600"
                           }`}
                         >
-                          {loading
-                            ? "Yuborilmoqda..."
-                            : needsPartner
-                            ? "Jamoani ro'yxatdan o'tkazish"
-                            : "Ro'yxatdan o'tish"}
+                          {loading ? "Yuborilmoqda..." : "Ro'yxatdan o'tish"}
                         </a>
 
                         <button
@@ -1129,11 +1125,8 @@ export default function Register(): JSX.Element {
                             : "btn-enabled bg-purple-600"
                         }`}
                       >
-                        {loading
-                          ? "Yuborilmoqda..."
-                          : needsPartner
-                          ? "Jamoani ro'yxatdan o'tkazish"
-                          : "Ro'yxatdan o'tish"}
+                       {loading ? "Yuborilmoqda..." : "Ro'yxatdan o'tish"}
+
                       </button>
                       <button
                         type="button"
